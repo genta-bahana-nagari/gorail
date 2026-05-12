@@ -3,10 +3,10 @@ import HeroSection from "@/components/sections/home/HeroSection";
 import SpecialOffers from "@/components/sections/home/SpecialOffers";
 import PopularRoutes from "@/components/sections/home/PopularRoutes";
 import HowItWorks from "@/components/sections/home/HowItWorks";
+import TrainClasses from "@/components/sections/home/TrainClasses";
+import FeaturesSection from "@/components/sections/home/FeaturesSection";
 // import Testimonials from "@/components/sections/home/Testimonials";
 // import LiveTrainStatus from "@/components/sections/home/LiveTrainStatus";
-// import TrainClasses from "@/components/sections/home/TrainClasses";
-import FeaturesSection from "@/components/sections/home/FeaturesSection";
 // import MobileAppPromo from "@/components/sections/home/MobileAppPromo";
 // import FAQSection from "@/components/sections/home/FAQSection";
 // import NewsletterSection from "@/components/sections/home/NewsletterSection";
@@ -20,7 +20,7 @@ const LandingPage = () => {
       <SpecialOffers /> 
       <PopularRoutes /> 
       <HowItWorks /> 
-      {/* <TrainClasses />  */}
+      <TrainClasses /> 
       <FeaturesSection /> 
       {/* <Testimonials />  */}
       {/* <LiveTrainStatus />  */}
