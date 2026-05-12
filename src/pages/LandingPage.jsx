@@ -1,12 +1,12 @@
 import Navbar from "@/components/layout/Navbar";
 import HeroSection from "@/components/sections/home/HeroSection";
-import FeaturesSection from "@/components/sections/home/FeaturesSection";
+import SpecialOffers from "@/components/sections/home/SpecialOffers";
 import PopularRoutes from "@/components/sections/home/PopularRoutes";
 import HowItWorks from "@/components/sections/home/HowItWorks";
-// import SpecialOffers from "@/components/sections/home/SpecialOffers";
-// import TrainClasses from "@/components/sections/home/TrainClasses";
 // import Testimonials from "@/components/sections/home/Testimonials";
 // import LiveTrainStatus from "@/components/sections/home/LiveTrainStatus";
+// import TrainClasses from "@/components/sections/home/TrainClasses";
+import FeaturesSection from "@/components/sections/home/FeaturesSection";
 // import MobileAppPromo from "@/components/sections/home/MobileAppPromo";
 // import FAQSection from "@/components/sections/home/FAQSection";
 // import NewsletterSection from "@/components/sections/home/NewsletterSection";
@@ -17,7 +17,7 @@ const LandingPage = () => {
     <div className="min-h-screen">
       <Navbar />
       <HeroSection />
-      {/* <SpecialOffers />  */}
+      <SpecialOffers /> 
       <PopularRoutes /> 
       <HowItWorks /> 
       {/* <TrainClasses />  */}
