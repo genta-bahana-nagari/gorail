@@ -90,8 +90,8 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative overflow-hidden bg-white">
-      <div className="relative h-125 md:h-150 lg:h-175">
+    <section className="relative overflow-hidden">
+      <div className="relative h-125 md:h-150 lg:h-175 pb-16 md:pb-24">
         {slides.map((slide, index) => (
           <div
             key={slide.id}
@@ -192,7 +192,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="relative z-20 -mt-8 md:-mt-12 lg:-mt-16 max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="relative z-30 -mt-12 md:-mt-16 lg:-mt-20 max-w-6xl mx-auto px-4 sm:px-6">
         <div className="bg-white rounded-2xl md:rounded-3xl border border-gray-200 shadow-xl p-4 md:p-6 lg:p-8">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
             <div className="flex items-center gap-3 md:gap-4 p-2 md:p-0">
