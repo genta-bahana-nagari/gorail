@@ -1,1 +1,78 @@
 @import "tailwindcss";
+
+@layer base {
+  /* Elegant British Railway Font Stack */
+  @font-face {
+    font-family: "Cormorant Garamond";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local("Cormorant Garamond"), local("CormorantGaramond-Regular");
+  }
+
+  @font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local("Inter"), local("Inter-Regular");
+  }
+
+  /* Apply fonts globally */
+  html {
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      "Helvetica Neue",
+      sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .font-serif,
+  .logo-text,
+  .vintage-text {
+    font-family: serif;
+  }
+
+  body {
+    @apply bg-white text-gray-900;
+    font-feature-settings: "kern" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .vintage-heading {
+    font-family: "Cormorant Garamond", serif;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+  }
+
+  .vintage-caption {
+    font-family: "Inter", sans-serif;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* British railway inspired text styles */
+  .railway-number {
+    font-family: "Inter", monospace;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+
+  .estate-text {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    letter-spacing: 0.02em;
+  }
+}
