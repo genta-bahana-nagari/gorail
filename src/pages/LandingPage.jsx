@@ -14,7 +14,7 @@ import Footer from "@/components/layout/Footer";
 
 const LandingPage = () => {
   return (
-    <div className="min-h-screen">
+    <div>
       <Navbar />
       <HeroSection />
       <SpecialOffers /> 
