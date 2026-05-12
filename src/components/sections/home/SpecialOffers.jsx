@@ -1,6 +1,6 @@
-// components/sections/SpecialOffers.jsx
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { FaTicketAlt, FaClock, FaGift, FaArrowRight } from "react-icons/fa";
 
 const offersData = [
@@ -32,9 +32,9 @@ const offersData = [
 
 const SpecialOffers = () => {
   const navigate = useNavigate();
+
   const [currentTime, setCurrentTime] = useState(new Date());
 
-  // Update waktu setiap detik
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTime(new Date());
@@ -43,12 +43,10 @@ const SpecialOffers = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Cari promo terdekat untuk flash sale
   const nearestOffer = offersData
     .filter((offer) => offer.validUntil > currentTime)
     .sort((a, b) => a.validUntil - b.validUntil)[0];
 
-  // Countdown flash sale
   const getTimeLeft = (targetDate) => {
     if (!targetDate) return null;
 
@@ -64,15 +62,18 @@ const SpecialOffers = () => {
       };
     }
 
-    // Perhitungan kasar
     const totalSeconds = Math.floor(difference / 1000);
 
     const months = Math.floor(totalSeconds / (30 * 24 * 60 * 60));
+
     const days = Math.floor(
       (totalSeconds % (30 * 24 * 60 * 60)) / (24 * 60 * 60),
     );
+
     const hours = Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60));
+
     const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+
     const seconds = totalSeconds % 60;
 
     return {
@@ -87,45 +88,46 @@ const SpecialOffers = () => {
   const timeLeft = getTimeLeft(nearestOffer?.validUntil);
 
   return (
-    <section className="relative -mt-10 md:-mt-14 py-16 bg-linear-to-br from-red-600 to-red-800">
-      <div className="max-w-7xl mx-auto px-4 mt-6 md:mt-12 sm:px-6 lg:px-8">
+    <section className="relative -mt-10 md:-mt-20 pt-28 md:pt-36 pb-20 bg-gradient-to-b from-red-700 to-red-800 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
+        <div className="text-center mb-14">
+          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full mb-5">
             <FaGift className="text-white" />
+
             <span className="text-white font-semibold text-sm">
               Promo Terbatas
             </span>
           </div>
 
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-5">
             Penawaran Spesial
           </h2>
 
-          <div className="w-20 h-1 bg-white mx-auto mb-4"></div>
-
-          <p className="text-white/90 max-w-2xl mx-auto">
-            Dapatkan diskon menarik untuk perjalanan Anda.
+          <p className="text-white/80 max-w-2xl mx-auto">
+            Dapatkan promo perjalanan terbaik dengan harga lebih hemat.
           </p>
         </div>
 
-        {/* Flash Sale */}
+        {/* Countdown */}
         {nearestOffer && (
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-10">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <FaClock className="text-white text-2xl animate-pulse" />
+          <div className="bg-white/10 backdrop-blur-lg border border-white/10 rounded-3xl p-5 md:p-8 mb-12">
+            <div className="flex flex-col xl:flex-row items-center justify-between gap-8">
+              <div className="flex items-center gap-4 text-center xl:text-left">
+                <div className="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center shrink-0">
+                  <FaClock className="text-white text-2xl animate-pulse" />
+                </div>
 
                 <div>
-                  <p className="text-white font-semibold">
-                    Promo terdekat berakhir dalam:
+                  <p className="text-white font-semibold text-lg">
+                    Promo terdekat berakhir dalam
                   </p>
 
                   <p className="text-white/70 text-sm">{nearestOffer.title}</p>
                 </div>
               </div>
 
-              <div className="flex gap-4 flex-wrap justify-center">
+              <div className="flex flex-wrap justify-center gap-3 md:gap-5">
                 {[
                   {
                     label: "Bulan",
@@ -149,13 +151,13 @@ const SpecialOffers = () => {
                   },
                 ].map((item) => (
                   <div key={item.label} className="text-center">
-                    <div className="bg-white rounded-lg px-4 py-2 min-w-17.5">
-                      <span className="text-2xl font-bold text-red-600">
+                    <div className="bg-white rounded-2xl min-w-[72px] md:min-w-[88px] px-4 py-3">
+                      <span className="text-2xl md:text-3xl font-bold text-red-600">
                         {String(item.value).padStart(2, "0")}
                       </span>
                     </div>
 
-                    <p className="text-white text-xs mt-1">{item.label}</p>
+                    <p className="text-white text-xs mt-2">{item.label}</p>
                   </div>
                 ))}
               </div>
@@ -163,50 +165,48 @@ const SpecialOffers = () => {
           </div>
         )}
 
-        {/* Offers */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {offersData.map((offer) => {
             const isExpired = currentTime > offer.validUntil;
 
             return (
               <div
                 key={offer.id}
-                className={`bg-white rounded-2xl overflow-hidden shadow-xl transition-all duration-300
-                  ${
-                    isExpired
-                      ? "opacity-60 grayscale"
-                      : "hover:shadow-2xl hover:-translate-y-1"
-                  }
-                `}
+                className={`bg-white rounded-3xl overflow-hidden shadow-2xl transition-all duration-300 ${
+                  isExpired
+                    ? "opacity-60 grayscale"
+                    : "hover:-translate-y-2 hover:shadow-[0_25px_50px_rgba(0,0,0,0.25)]"
+                }`}
               >
-                <div className="bg-linear-to-r from-red-500 to-red-600 p-4">
+                <div className="bg-gradient-to-r from-red-500 to-red-600 p-6">
                   <div className="flex justify-between items-center">
-                    <span className="text-white font-bold text-3xl">
+                    <span className="text-white text-4xl font-bold">
                       {offer.discount}%
                     </span>
 
                     <FaTicketAlt className="text-white/30 text-5xl" />
                   </div>
 
-                  <h3 className="text-white font-bold text-xl mt-2">
+                  <h3 className="text-white text-xl font-bold mt-3">
                     {offer.title}
                   </h3>
                 </div>
 
                 <div className="p-6">
-                  <p className="text-gray-600 text-sm mb-4">
+                  <p className="text-gray-600 text-sm mb-5">
                     {offer.description}
                   </p>
 
-                  <div className="bg-gray-100 rounded-lg p-3 mb-4">
+                  <div className="bg-gray-100 rounded-2xl p-4 mb-5">
                     <p className="text-xs text-gray-500 mb-1">Kode Promo</p>
 
-                    <p className="font-mono font-bold text-red-600 text-lg">
+                    <p className="font-mono text-xl font-bold text-red-600">
                       {offer.code}
                     </p>
                   </div>
 
-                  <p className="text-xs text-gray-500 mb-4">
+                  <p className="text-xs text-gray-500 mb-5">
                     Berlaku hingga{" "}
                     {offer.validUntil.toLocaleDateString("id-ID", {
                       day: "numeric",
@@ -218,13 +218,11 @@ const SpecialOffers = () => {
                   <button
                     disabled={isExpired}
                     onClick={() => navigate("/trains")}
-                    className={`w-full py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors
-                      ${
-                        isExpired
-                          ? "bg-gray-400 cursor-not-allowed text-white"
-                          : "bg-red-600 hover:bg-red-700 text-white"
-                      }
-                    `}
+                    className={`w-full py-3 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all ${
+                      isExpired
+                        ? "bg-gray-400 cursor-not-allowed text-white"
+                        : "bg-red-600 hover:bg-red-700 text-white"
+                    }`}
                   >
                     {isExpired ? "Promo Berakhir" : "Pesan Sekarang"}
 
@@ -236,8 +234,7 @@ const SpecialOffers = () => {
           })}
         </div>
 
-        {/* Terms */}
-        <p className="text-center text-white/70 text-xs mt-8">
+        <p className="text-center text-white/60 text-xs mt-10">
           *Syarat dan ketentuan berlaku.
         </p>
       </div>
