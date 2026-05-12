@@ -10,7 +10,7 @@ import {
 import { FaBars } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import { useState } from "react";
-import useBookingStore from "../../store/bookingStore";
+import useBookingStore from "@/store/bookingStore";
 
 const Navbar = () => {
   const navigate = useNavigate();
