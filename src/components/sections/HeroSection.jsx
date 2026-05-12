@@ -7,7 +7,7 @@ import {
   FaChevronLeft,
   FaChevronRight,
 } from "react-icons/fa";
-import Button from "../common/Button";
+import Button from "@/components/layout/Button";
 
 const HeroSection = () => {
   const navigate = useNavigate();
