@@ -21,7 +21,7 @@ const TrainClasses = () => {
         { icon: FaChair, text: "Kursi standar" },
         { icon: FaSnowflake, text: "AC" },
       ],
-      color: "green",
+
       image:
         "https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=600&h=400&fit=crop",
     },
@@ -36,7 +36,7 @@ const TrainClasses = () => {
         { icon: FaSnowflake, text: "AC" },
         { icon: FaPlug, text: "Charger port" },
       ],
-      color: "blue",
+
       image:
         "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&h=400&fit=crop",
     },
@@ -52,7 +52,7 @@ const TrainClasses = () => {
         { icon: FaPlug, text: "Charger port" },
         { icon: FaSnowflake, text: "AC" },
       ],
-      color: "red",
+
       image:
         "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=600&h=400&fit=crop",
     },
@@ -82,7 +82,7 @@ const TrainClasses = () => {
               onClick={() => setSelectedClass(key)}
               className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 cursor-pointer ${
                 selectedClass === key
-                  ? `bg-${classes[key].color}-600 text-white shadow-lg transform scale-105`
+                  ? `bg-red-600 text-white shadow-lg transform scale-105`
                   : "bg-white text-gray-700 hover:bg-gray-200/80"
               }`}
             >
@@ -101,17 +101,12 @@ const TrainClasses = () => {
                 alt={currentClass.name}
                 className="w-full h-full object-cover"
               />
-              <div
-                className={`absolute inset-0 bg-${currentClass.color}-600/20`}
-              ></div>
             </div>
 
             {/* Content */}
             <div className="p-8 lg:p-10">
               <div className="mb-6">
-                <h3
-                  className={`text-3xl font-bold text-${currentClass.color}-600 mb-2`}
-                >
+                <h3 className="text-3xl font-bold text-black mb-2">
                   {currentClass.name}
                 </h3>
                 <p className="text-gray-600">{currentClass.description}</p>
@@ -131,9 +126,7 @@ const TrainClasses = () => {
               <div className="grid grid-cols-2 gap-3 mb-8">
                 {currentClass.features.map((feature, index) => (
                   <div key={index} className="flex items-center gap-2">
-                    <feature.icon
-                      className={`text-${currentClass.color}-600 text-sm`}
-                    />
+                    <feature.icon className="text-black text-sm" />
                     <span className="text-gray-700 text-sm">
                       {feature.text}
                     </span>
