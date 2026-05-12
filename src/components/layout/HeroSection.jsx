@@ -142,7 +142,7 @@ const HeroSection = () => {
                     </Button>
 
                     <div className="flex items-center gap-2 md:gap-3">
-                      <div className="text-sm md:text-xl font-semibold font-serif text-white/90 md:text-gray-100">
+                      <div className="text-sm md:text-xl font-semibold font-serif text-white/90 md:text-gray-100 text-shadow-sm text-shadow-neutral-800">
                         {slide.stat}
                       </div>
                     </div>
