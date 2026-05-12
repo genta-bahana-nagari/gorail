@@ -5,11 +5,11 @@ import PopularRoutes from "@/components/sections/home/PopularRoutes";
 import HowItWorks from "@/components/sections/home/HowItWorks";
 import TrainClasses from "@/components/sections/home/TrainClasses";
 import FeaturesSection from "@/components/sections/home/FeaturesSection";
-// import Testimonials from "@/components/sections/home/Testimonials";
-// import LiveTrainStatus from "@/components/sections/home/LiveTrainStatus";
-// import MobileAppPromo from "@/components/sections/home/MobileAppPromo";
-// import FAQSection from "@/components/sections/home/FAQSection";
-// import NewsletterSection from "@/components/sections/home/NewsletterSection";
+import Testimonials from "@/components/sections/home/Testimonials";
+import LiveTrainStatus from "@/components/sections/home/LiveTrainStatus";
+import MobileAppPromo from "@/components/sections/home/MobileAppPromo";
+import FAQSection from "@/components/sections/home/FAQSection";
+import NewsletterSection from "@/components/sections/home/NewsletterSection";
 import Footer from "@/components/layout/Footer";
 
 const LandingPage = () => {
@@ -22,11 +22,11 @@ const LandingPage = () => {
       <HowItWorks /> 
       <TrainClasses /> 
       <FeaturesSection /> 
-      {/* <Testimonials />  */}
-      {/* <LiveTrainStatus />  */}
-      {/* <MobileAppPromo />  */}
-      {/* <FAQSection />  */}
-      {/* <NewsletterSection />  */}
+      <Testimonials /> 
+      <LiveTrainStatus /> 
+      <MobileAppPromo /> 
+      <FAQSection /> 
+      <NewsletterSection /> 
       <Footer />
     </div>
   );
