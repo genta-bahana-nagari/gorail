@@ -53,7 +53,7 @@ const FeaturesSection = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="flex flex-col items-center group bg-white border border-gray-200 rounded-3xl px-6 py-8 hover:border-red-100 hover:shadow-xl transition-all duration-300 text-center cursor-default"
+              className="cursor-pointer flex flex-col items-center group bg-white border border-gray-200 rounded-3xl px-6 py-8 hover:border-red-100 hover:shadow-xl transition-all duration-300 text-center"
             >
               <div className="w-14 h-14 rounded-2xl bg-red-50 flex  items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300 ">
                 {feature.icon}

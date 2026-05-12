@@ -80,7 +80,7 @@ const TrainClasses = () => {
             <button
               key={key}
               onClick={() => setSelectedClass(key)}
-              className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 cursor-pointer ${
+              className={`px-3 py-1 md:px-6 md:py-3 text-sm md:text-base rounded-xl font-semibold transition-all duration-300 cursor-pointer ${
                 selectedClass === key
                   ? `bg-red-600 text-white shadow-lg transform scale-105`
                   : "bg-white text-gray-700 hover:bg-gray-200/80"
@@ -106,15 +106,19 @@ const TrainClasses = () => {
             {/* Content */}
             <div className="p-8 lg:p-10">
               <div className="mb-6">
-                <h3 className="text-3xl font-bold text-black mb-2">
+                <h3 className="text-2xl md:text-3xl font-bold text-black mb-2">
                   {currentClass.name}
                 </h3>
-                <p className="text-gray-600">{currentClass.description}</p>
+                <p className="text-sm md:text-base text-gray-600">
+                  {currentClass.description}
+                </p>
               </div>
 
               <div className="mb-6">
-                <p className="text-gray-500 text-sm mb-2">Harga mulai dari</p>
-                <p className="text-4xl font-bold text-gray-900">
+                <p className="text-sm md:text-base text-gray-500 mb-2">
+                  Harga mulai dari
+                </p>
+                <p className="text-3xl md:text-4xl font-bold text-gray-900">
                   {currentClass.price}
                 </p>
                 <p className="text-gray-500 text-xs mt-1">
