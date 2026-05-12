@@ -51,7 +51,7 @@ const HowItWorks = () => {
             {steps.map((step, index) => (
               <div
                 key={step.id}
-                className="group relative bg-white/80 backdrop-blur-sm border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                className="cursor-pointer group relative bg-white/80 backdrop-blur-sm border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
               >
                 <div className="absolute top-5 right-5 w-5 md:w-9 h-5 md:h-9 rounded-full bg-gray-900 text-white text-xs md:text-sm font-bold flex items-center justify-center shadow-lg">
                   {index + 1}

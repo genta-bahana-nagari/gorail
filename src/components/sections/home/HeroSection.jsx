@@ -94,8 +94,8 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative overflow-visible bg-gradient-to-b from-red-600 to-red-700">
-      <div className="relative h-[620px] md:h-[760px] lg:h-[860px]">
+    <section className="relative overflow-visible bg-linear-to-b from-red-600 to-red-700">
+      <div className="relative h-155 md:h-190 lg:h-215">
         {slides.map((slide, index) => (
           <div
             key={slide.id}
@@ -122,7 +122,7 @@ const HeroSection = () => {
             />
 
             {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/70" />
+            <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/50 to-black/70" />
 
             {/* Content */}
             <div className="relative z-10 h-full flex items-center">
@@ -145,7 +145,7 @@ const HeroSection = () => {
                   <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
                     <Button
                       onClick={() => navigate("/trains")}
-                      className="w-full sm:w-auto px-7 py-3 rounded-xl"
+                      className="cursor-pointer w-full sm:w-auto px-7 py-3 rounded-xl"
                     >
                       Jelajahi Rute
                     </Button>
@@ -163,14 +163,14 @@ const HeroSection = () => {
         {/* Navigation */}
         <button
           onClick={prevSlide}
-          className="hidden md:flex absolute left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/90 items-center justify-center shadow-lg"
+          className="cursor-pointer hidden md:flex absolute left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/90 items-center justify-center shadow-lg"
         >
           <FaChevronLeft />
         </button>
 
         <button
           onClick={nextSlide}
-          className="hidden md:flex absolute right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/90 items-center justify-center shadow-lg"
+          className="cursor-pointer hidden md:flex absolute right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/90 items-center justify-center shadow-lg"
         >
           <FaChevronRight />
         </button>
@@ -184,7 +184,7 @@ const HeroSection = () => {
         />
 
         {/* Dots */}
-        <div className="absolute bottom-28 md:bottom-36 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+        <div className="absolute bottom-28 md:bottom-36 lg:bottom-42 left-1/2 -translate-x-1/2 flex gap-3 z-20">
           {slides.map((_, index) => (
             <button
               key={index}

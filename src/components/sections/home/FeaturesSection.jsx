@@ -39,7 +39,7 @@ const FeaturesSection = () => {
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="railway-subtitle text-red-600">Mengapa GoRail</span>
 
-          <h2 className="railway-title text-4xl md:text-5xl text-gray-900 mt-4 mb-5">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-5">
             Pengalaman Perjalanan yang Modern
           </h2>
 
