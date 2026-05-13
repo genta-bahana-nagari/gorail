@@ -40,7 +40,7 @@ const HeroSection = () => {
         "https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=1600&h=900&fit=crop",
       mobileImage:
         "https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=800&h=1200&fit=crop",
-      stat: "Support 24/7",
+      stat: "Dukungan & Bantuan 24/7",
     },
     {
       id: 3,
