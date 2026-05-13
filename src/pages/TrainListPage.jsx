@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useLayoutEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   FaFilter,
@@ -26,6 +26,10 @@ const TrainListPage = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const trainsPerPage = 5;
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const loadTrains = useCallback(async () => {
     setLoading(true);
@@ -87,7 +91,6 @@ const TrainListPage = () => {
     navigate("/seats");
   };
 
-  // Pagination
   const indexOfLastTrain = currentPage * trainsPerPage;
   const indexOfFirstTrain = indexOfLastTrain - trainsPerPage;
   const currentTrains = filteredTrains.slice(
@@ -98,11 +101,15 @@ const TrainListPage = () => {
 
   if (loading) {
     return (
-      <>
+      <div className="min-h-screen flex flex-col">
         <Navbar />
-        <LoadingSpinner message="Mencari jadwal kereta terbaik untuk Anda..." />
+
+        <div className="flex-1 flex items-center justify-center">
+          <LoadingSpinner message="Mencari jadwal kereta terbaik untuk Anda..." />
+        </div>
+
         <Footer />
-      </>
+      </div>
     );
   }
 
@@ -110,7 +117,7 @@ const TrainListPage = () => {
     <>
       <Navbar />
 
-      <div className="bg-gray-50">
+      <div className="min-h-screen bg-gray-50">
         {/* Hero Banner - Improved Version */}
         <div className="relative bg-linear-to-b from-black via-zinc-900 to-black overflow-hidden border-b border-red-900/30">
           {/* Subtle Pattern */}
@@ -252,7 +259,7 @@ const TrainListPage = () => {
 
               {/* Results Summary */}
               <div className="flex justify-between items-center mb-6">
-                <div>
+                <div className="text-xs md:text-sm lg:text-base">
                   <p className="railway-body text-gray-600">
                     Menampilkan{" "}
                     <span className="font-bold text-gray-900">
@@ -261,9 +268,9 @@ const TrainListPage = () => {
                     kereta
                   </p>
                 </div>
-                <div className="text-sm text-gray-500">
+                <div className="text-xs md:text-sm text-gray-500">
                   <span className="railway-caption">Urutkan: </span>
-                  <select className="border border-gray-300 rounded-md px-2 py-1 text-sm">
+                  <select className="border border-gray-300 rounded-md px-2 py-1 text-xs md:text-sm">
                     <option>Termurah</option>
                     <option>Tercepat</option>
                     <option>Berangkat Pagi</option>
