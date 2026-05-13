@@ -9,7 +9,7 @@ import {
 import useBookingStore from "@/store/bookingStore";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import Button from "@/components/layout/Button";
+import Button from "@/components/common/Button";
 
 const MyBookingsPage = () => {
   const navigate = useNavigate();

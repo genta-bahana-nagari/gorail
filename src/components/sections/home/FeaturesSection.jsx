@@ -39,7 +39,7 @@ const FeaturesSection = () => {
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="railway-subtitle text-red-600">Mengapa GoRail</span>
 
-          <h2 className="railway-title text-4xl md:text-5xl text-gray-900 mt-4 mb-5">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-5">
             Pengalaman Perjalanan yang Modern
           </h2>
 
@@ -53,7 +53,7 @@ const FeaturesSection = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="flex flex-col items-center group bg-white border border-gray-200 rounded-3xl px-6 py-8 hover:border-red-100 hover:shadow-xl transition-all duration-300 text-center cursor-default"
+              className="cursor-pointer flex flex-col items-center group bg-white border border-gray-200 rounded-3xl px-6 py-8 hover:border-red-100 hover:shadow-xl transition-all duration-300 text-center"
             >
               <div className="w-14 h-14 rounded-2xl bg-red-50 flex  items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300 ">
                 {feature.icon}

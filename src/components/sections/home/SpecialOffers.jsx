@@ -88,7 +88,7 @@ const SpecialOffers = () => {
   const timeLeft = getTimeLeft(nearestOffer?.validUntil);
 
   return (
-    <section className="relative -mt-10 md:-mt-20 pt-28 md:pt-36 pb-20 bg-gradient-to-b from-red-700 to-red-800 overflow-hidden">
+    <section className="relative -mt-10 md:-mt-20 pt-28 md:pt-36 pb-20 bg-linear-to-b from-red-700 to-red-800 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14">
@@ -151,7 +151,7 @@ const SpecialOffers = () => {
                   },
                 ].map((item) => (
                   <div key={item.label} className="text-center">
-                    <div className="bg-white rounded-2xl min-w-[72px] md:min-w-[88px] px-4 py-3">
+                    <div className="bg-white rounded-2xl min-w-18 md:min-w-22 px-4 py-3">
                       <span className="text-2xl md:text-3xl font-bold text-red-600">
                         {String(item.value).padStart(2, "0")}
                       </span>
@@ -175,11 +175,11 @@ const SpecialOffers = () => {
                 key={offer.id}
                 className={`bg-white rounded-3xl overflow-hidden shadow-2xl transition-all duration-300 ${
                   isExpired
-                    ? "opacity-60 grayscale"
-                    : "hover:-translate-y-2 hover:shadow-[0_25px_50px_rgba(0,0,0,0.25)]"
+                    ? "opacity-60 grayscale cursor-default"
+                    : "cursor-pointer hover:-translate-y-2 hover:shadow-[0_25px_50px_rgba(0,0,0,0.25)]"
                 }`}
               >
-                <div className="bg-gradient-to-r from-red-500 to-red-600 p-6">
+                <div className="bg-linear-to-r from-red-500 to-red-600 p-6">
                   <div className="flex justify-between items-center">
                     <span className="text-white text-4xl font-bold">
                       {offer.discount}%
@@ -221,7 +221,7 @@ const SpecialOffers = () => {
                     className={`w-full py-3 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all ${
                       isExpired
                         ? "bg-gray-400 cursor-not-allowed text-white"
-                        : "bg-red-600 hover:bg-red-700 text-white"
+                        : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
                     }`}
                   >
                     {isExpired ? "Promo Berakhir" : "Pesan Sekarang"}

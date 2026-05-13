@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @layer base {
-  /* Elegant British Railway Font Stack */
   @font-face {
     font-family: "Cormorant Garamond";
     font-style: normal;
@@ -18,7 +17,6 @@
     src: local("Inter"), local("Inter-Regular");
   }
 
-  /* Apply fonts globally */
   html {
     font-family:
       "Inter",
@@ -28,6 +26,7 @@
       Roboto,
       "Helvetica Neue",
       sans-serif;
+    scroll-behavior: smooth;
   }
 
   h1,
@@ -63,7 +62,6 @@
     font-weight: 500;
   }
 
-  /* British railway inspired text styles */
   .railway-number {
     font-family: "Inter", monospace;
     letter-spacing: 0.1em;

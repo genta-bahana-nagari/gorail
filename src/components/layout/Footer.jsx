@@ -105,7 +105,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="/faq"
+                  href="#faq"
                   className="text-gray-300 hover:text-red-500 transition-colors duration-300 text-sm"
                 >
                   FAQ
@@ -168,7 +168,7 @@ const Footer = () => {
                 placeholder="Alamat email Anda"
                 className="flex-1 px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:border-red-500 transition-colors text-sm"
               />
-              <button className="px-6 py-2 bg-red-600 hover:bg-red-700 rounded-lg transition-colors duration-300 font-medium text-sm">
+              <button className="px-6 py-2 cursor-pointer bg-red-600 hover:bg-red-700 rounded-lg transition-colors duration-300 font-medium text-sm">
                 Berlangganan
               </button>
             </div>
@@ -199,6 +199,14 @@ const Footer = () => {
                 className="text-gray-400 hover:text-red-500 transition-colors"
               >
                 Kebijakan Cookie
+              </a>
+              <a
+                href="https://profile.gentabahana.web.id"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-red-500 transition-colors"
+              >
+                Profil Developer
               </a>
             </div>
           </div>
