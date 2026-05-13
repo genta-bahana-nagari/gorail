@@ -81,7 +81,7 @@ const NewsletterSection = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="px-6 py-3 bg-yellow-500 text-gray-900 rounded-xl hover:bg-yellow-400 transition font-semibold flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-6 py-3 cursor-pointer bg-white text-gray-900 rounded-xl hover:bg-gray-900/80 hover:text-white transition font-semibold flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   "Memproses..."

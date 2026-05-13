@@ -129,9 +129,9 @@ const TrainClasses = () => {
               {/* Features Grid */}
               <div className="grid grid-cols-2 gap-3 mb-8">
                 {currentClass.features.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-2">
-                    <feature.icon className="text-black text-sm" />
-                    <span className="text-gray-700 text-sm">
+                  <div key={index} className="flex items-center gap-2 text-xs md:text-sm">
+                    <feature.icon className="text-black" />
+                    <span className="text-gray-700">
                       {feature.text}
                     </span>
                   </div>
