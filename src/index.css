@@ -28,6 +28,7 @@
       Roboto,
       "Helvetica Neue",
       sans-serif;
+    scroll-behavior: smooth;
   }
 
   h1,

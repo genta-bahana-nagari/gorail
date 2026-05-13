@@ -105,7 +105,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="/faq"
+                  href="#faq"
                   className="text-gray-300 hover:text-red-500 transition-colors duration-300 text-sm"
                 >
                   FAQ
@@ -199,6 +199,14 @@ const Footer = () => {
                 className="text-gray-400 hover:text-red-500 transition-colors"
               >
                 Kebijakan Cookie
+              </a>
+              <a
+                href="https://profile.gentabahana.web.id"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-red-500 transition-colors"
+              >
+                Profil Developer
               </a>
             </div>
           </div>
