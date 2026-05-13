@@ -101,7 +101,7 @@ const SearchFilters = ({ onFilterChange }) => {
       {/* Ornamental Divider */}
       <div className="mt-6 pt-4 border-t border-gray-100">
         <p className="text-xs text-gray-400 text-center railway-caption">
-          GO RAIL • EST. 2026
+          GoRail • Est. 2026
         </p>
       </div>
     </div>
