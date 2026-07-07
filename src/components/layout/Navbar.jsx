@@ -1,9 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import {
   FaTrain,
-  FaUser,
   FaSignOutAlt,
-  FaTicketAlt,
   FaHome,
   FaInfoCircle,
 } from "react-icons/fa";
@@ -11,6 +9,7 @@ import { FaBars } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import { useState } from "react";
 import useBookingStore from "@/store/bookingStore";
+import { IoChatbubbleSharp } from "react-icons/io5";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -36,11 +35,6 @@ const Navbar = () => {
       to: "/trains",
       label: "Cari Kereta",
       icon: <FaTrain className="text-red-600 text-sm" />,
-    },
-    {
-      to: "/my-bookings",
-      label: "Pemesanan Saya",
-      icon: <FaTicketAlt className="text-red-600 text-sm" />,
     },
     {
       to: "/about",
@@ -115,12 +109,12 @@ const Navbar = () => {
               </>
             ) : (
               <button
-                onClick={() => navigate("/login")}
+                onClick={() => navigate("/contact")}
                 className="cursor-pointer flex items-center gap-2 bg-red-600 px-5 py-2 rounded-md hover:bg-red-700 transition-colors duration-300 text-white"
               >
-                <FaUser className="text-sm" />
+                <IoChatbubbleSharp className="text-sm" />
 
-                <span className="text-sm font-medium tracking-wide">Masuk</span>
+                <span className="text-sm font-medium tracking-wide">Kontak</span>
               </button>
             )}
           </div>
@@ -174,14 +168,14 @@ const Navbar = () => {
             ) : (
               <button
                 onClick={() => {
-                  navigate("/login");
+                  navigate("/contact");
                   closeMenu();
                 }}
                 className="mx-4 flex items-center justify-center gap-2 bg-red-600 px-4 py-3 rounded-lg hover:bg-red-700 transition text-white"
               >
-                <FaUser />
+                <IoChatbubbleSharp />
 
-                <span className="font-medium">Masuk</span>
+                <span className="font-medium">Kontak</span>
               </button>
             )}
           </div>

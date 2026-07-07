@@ -118,9 +118,7 @@ const TrainListPage = () => {
       <Navbar />
 
       <div className="min-h-screen bg-gray-50">
-        {/* Hero Banner - Improved Version */}
         <div className="relative bg-linear-to-b from-black via-zinc-900 to-black overflow-hidden border-b border-red-900/30">
-          {/* Subtle Pattern */}
           <div className="absolute inset-0 opacity-[0.03]">
             <div
               className="absolute inset-0"
@@ -132,22 +130,19 @@ const TrainListPage = () => {
             />
           </div>
 
-          {/* Accent Glow */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-125 h-50 bg-red-600/10 blur-3xl rounded-full" />
 
           <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-16">
-            {/* Top Ornament */}
             <div className="flex justify-center items-center gap-3 mb-6">
               <div className="w-10 h-px bg-red-600/70" />
               <div className="w-2 h-2 rotate-45 bg-red-600" />
               <div className="w-10 h-px bg-red-600/70" />
             </div>
 
-            {/* Heading */}
             <div className="text-center">
               <h1 className="railway-title text-3xl md:text-5xl font-bold text-white tracking-tight leading-tight">
-                Temukan Perjalanan
-                <span className="block mt-1">Kereta Anda</span>
+                Temukan Jadwal
+                <span className="block mt-1">Perjalanan Kereta</span>
               </h1>
 
               <p className="mt-5 text-gray-400 max-w-xl mx-auto text-sm md:text-base leading-relaxed">
@@ -156,11 +151,9 @@ const TrainListPage = () => {
               </p>
             </div>
 
-            {/* Journey Card */}
             <div className="max-w-4xl mx-auto mt-10">
               <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
                 <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/10">
-                  {/* Route */}
                   <div className="p-6 text-center">
                     <p className="text-xs uppercase tracking-[0.2em] text-red-400 mb-3">
                       Rute
@@ -183,7 +176,6 @@ const TrainListPage = () => {
                     </div>
                   </div>
 
-                  {/* Date */}
                   <div className="p-6 text-center">
                     <p className="text-xs uppercase tracking-[0.2em] text-red-400 mb-3">
                       Keberangkatan
@@ -197,7 +189,6 @@ const TrainListPage = () => {
                     </div>
                   </div>
 
-                  {/* Passengers */}
                   <div className="p-6 text-center">
                     <p className="text-xs uppercase tracking-[0.2em] text-red-400 mb-3">
                       Penumpang
@@ -212,7 +203,6 @@ const TrainListPage = () => {
                   </div>
                 </div>
 
-                {/* Footer */}
                 <div className="border-t border-white/10 px-6 py-4 flex justify-center bg-black/20">
                   <button
                     onClick={() => navigate("/")}
@@ -227,19 +217,15 @@ const TrainListPage = () => {
           </div>
         </div>
 
-        {/* Main Content Area */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col lg:flex-row gap-6">
-            {/* Filters Sidebar - Desktop */}
             <div className="hidden lg:block lg:w-80">
               <div className="sticky top-24">
                 <SearchFilters onFilterChange={handleFilterChange} />
               </div>
             </div>
 
-            {/* Main Content */}
             <div className="flex-1">
-              {/* Mobile Filter Button */}
               <div className="lg:hidden mb-4">
                 <button
                   onClick={() => setShowFilters(!showFilters)}
@@ -249,7 +235,6 @@ const TrainListPage = () => {
                   <span className="font-serif">Filter Kereta</span>
                 </button>
 
-                {/* Mobile Filters Drawer */}
                 {showFilters && (
                   <div className="mt-4">
                     <SearchFilters onFilterChange={handleFilterChange} />
@@ -257,7 +242,6 @@ const TrainListPage = () => {
                 )}
               </div>
 
-              {/* Results Summary */}
               <div className="flex justify-between items-center mb-6">
                 <div className="text-xs md:text-sm lg:text-base">
                   <p className="railway-body text-gray-600">
@@ -278,7 +262,6 @@ const TrainListPage = () => {
                 </div>
               </div>
 
-              {/* Train List */}
               {currentTrains.length === 0 ? (
                 <div className="bg-white rounded-lg shadow-md p-12 text-center">
                   <FaTrain className="text-6xl text-gray-300 mx-auto mb-4" />
@@ -302,7 +285,6 @@ const TrainListPage = () => {
                 </div>
               )}
 
-              {/* Pagination */}
               {totalPages > 1 && (
                 <div className="flex justify-center items-center space-x-2 mt-8">
                   <button

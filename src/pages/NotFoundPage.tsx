@@ -16,7 +16,7 @@ const NotFoundPage = () => {
               <div className="w-16 h-px bg-red-700"></div>
               <div className="w-16 h-px bg-red-700"></div>
             </div>
-
+n
             <div className="relative mb-8">
               <div className="text-8xl md:text-9xl font-bold text-gray-700">
                 404
