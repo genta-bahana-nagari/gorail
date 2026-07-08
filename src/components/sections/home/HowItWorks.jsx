@@ -47,17 +47,6 @@ const HowItWorks = () => {
           </p>
         </div>
 
-        <div className="max-w-3xl mx-auto my-8">
-          <div className="flex items-start gap-3 rounded-2xl border border-gray-200 bg-gray-50 px-5 py-4">
-            <BsExclamationCircle className="mt-0.5 h-5 w-5 shrink-0 text-gray-600" />
-            <p className="text-sm leading-6 text-gray-900">
-              <span className="font-semibold">Perhatian:</span> Pemesanan tiket
-              hanya dapat dilakukan melalui aplikasi. Website ini hanya
-              menyediakan informasi rute kereta dan kontak bantuan.
-            </p>
-          </div>
-        </div>
-
         <div className="relative">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
             {steps.map((step, index) => (
@@ -87,7 +76,7 @@ const HowItWorks = () => {
           </div>
         </div>
 
-        <div className="mt-24 rounded-3xl bg-linear-to-t from-red-600 to-red-500 p-10 shadow-2xl">
+        <div className="mt-20 rounded-3xl bg-linear-to-t from-red-600 to-red-500 p-10">
           <div className="grid grid-cols-1 gap-10 text-center text-white md:grid-cols-3">
             <div>
               <h3 className="mb-2 text-4xl font-extrabold md:text-5xl">
@@ -105,6 +94,17 @@ const HowItWorks = () => {
               <h3 className="mb-2 text-4xl font-extrabold md:text-5xl">24/7</h3>
               <p className="font-medium text-red-100">Dukungan Pelanggan</p>
             </div>
+          </div>
+        </div>
+
+        <div className="max-w-6xl mx-auto my-8">
+          <div className="flex items-center justify-center text-center gap-3 rounded-2xl border border-gray-200 bg-gray-50 px-5 py-4">
+            <BsExclamationCircle className="h-5 w-5 shrink-0 text-gray-600" />
+            <p className="text-sm leading-6 text-gray-900">
+              <span className="font-semibold">Perhatian:</span> Pemesanan tiket
+              hanya dapat dilakukan melalui aplikasi. Situs ini hanya
+              menyediakan informasi rute kereta dan kontak bantuan.
+            </p>
           </div>
         </div>
       </div>
