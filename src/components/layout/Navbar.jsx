@@ -38,7 +38,7 @@ const Navbar = () => {
     },
     {
       to: "/about",
-      label: "Tentang",
+      label: "Tentang Kami",
       icon: <FaInfoCircle className="text-red-600 text-sm" />,
     },
   ];
