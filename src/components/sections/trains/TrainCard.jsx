@@ -98,7 +98,7 @@ const TrainCard = ({ train, passengers, onSelect }) => {
           variant="primary"
           className="w-full bg-red-600 hover:bg-red-700 text-white py-2.5"
         >
-          Pilih Kereta Ini
+          Lihat Detail Kereta
         </Button>
       </div>
     </div>
