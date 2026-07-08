@@ -1,39 +1,25 @@
-import { useState } from "react";
 import { FaFilter, FaTimes } from "react-icons/fa";
 
-const SearchFilters = ({ onFilterChange }) => {
-  const [filters, setFilters] = useState({
-    trainType: "all",
-    priceRange: "all",
-    departureTime: "all",
-  });
-
-  const handleFilterChange = (key, value) => {
-    const newFilters = { ...filters, [key]: value };
-    setFilters(newFilters);
-    onFilterChange(newFilters);
-  };
-
-  const clearFilters = () => {
-    const resetFilters = {
-      trainType: "all",
-      priceRange: "all",
-      departureTime: "all",
-    };
-    setFilters(resetFilters);
-    onFilterChange(resetFilters);
+const SearchFilters = ({ filters, onFilterChange, onClear }) => {
+  const handleChange = ({ target: { name, value } }) => {
+    onFilterChange({
+      ...filters,
+      [name]: value,
+    });
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
-      <div className="flex justify-between items-center mb-4">
+    <div className="rounded-lg bg-white p-6 shadow-md">
+      <div className="mb-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <FaFilter className="text-red-600" />
           <h3 className="font-serif font-semibold text-gray-800">Filter</h3>
         </div>
+
         <button
-          onClick={clearFilters}
-          className="text-sm text-gray-500 hover:text-red-600 transition flex items-center gap-1"
+          type="button"
+          onClick={onClear}
+          className="flex items-center gap-1 text-sm text-gray-500 transition hover:text-red-600"
         >
           <FaTimes size={12} />
           Reset
@@ -41,15 +27,17 @@ const SearchFilters = ({ onFilterChange }) => {
       </div>
 
       <div className="space-y-4">
-        {/* Train Type Filter */}
+        {/* Tipe Kereta */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="mb-2 block text-sm font-medium text-gray-700">
             Tipe Kereta
           </label>
+
           <select
+            name="trainType"
             value={filters.trainType}
-            onChange={(e) => handleFilterChange("trainType", e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
+            onChange={handleChange}
+            className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
           >
             <option value="all">Semua Tipe</option>
             <option value="superfast">Superfast</option>
@@ -59,49 +47,53 @@ const SearchFilters = ({ onFilterChange }) => {
           </select>
         </div>
 
-        {/* Price Range Filter */}
+        {/* Harga */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="mb-2 block text-sm font-medium text-gray-700">
             Rentang Harga
           </label>
+
           <select
+            name="priceRange"
             value={filters.priceRange}
-            onChange={(e) => handleFilterChange("priceRange", e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
+            onChange={handleChange}
+            className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
           >
             <option value="all">Semua Harga</option>
-            <option value="0-100">Di bawah Rp 100.000</option>
-            <option value="100-200">Rp 100.000 - 200.000</option>
-            <option value="200-300">Rp 200.000 - 300.000</option>
-            <option value="300-500">Rp 300.000 - 500.000</option>
-            <option value="500-1000">Di atas Rp 500.000</option>
+            <option value="0-100000">Di bawah Rp100.000</option>
+            <option value="100000-200000">Rp100.000 - Rp200.000</option>
+            <option value="200000-300000">Rp200.000 - Rp300.000</option>
+            <option value="300000-500000">Rp300.000 - Rp500.000</option>
+            <option value="500000-999999999">Di atas Rp500.000</option>
           </select>
         </div>
 
-        {/* Departure Time Filter */}
+        {/* Waktu */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="mb-2 block text-sm font-medium text-gray-700">
             Waktu Keberangkatan
           </label>
+
           <select
+            name="departureTime"
             value={filters.departureTime}
-            onChange={(e) =>
-              handleFilterChange("departureTime", e.target.value)
-            }
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
+            onChange={handleChange}
+            className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
           >
             <option value="all">Semua Waktu</option>
+
             <option value="morning">Pagi (00:00 - 12:00)</option>
+
             <option value="afternoon">Siang (12:00 - 17:00)</option>
+
             <option value="evening">Malam (17:00 - 23:59)</option>
           </select>
         </div>
       </div>
 
-      {/* Ornamental Divider */}
-      <div className="mt-6 pt-4 border-t border-gray-100">
-        <p className="text-xs text-gray-400 text-center railway-caption">
-          GO RAIL • EST. 2026
+      <div className="mt-6 border-t border-gray-100 pt-4">
+        <p className="railway-caption text-center text-xs text-gray-400">
+          GoRail • Est. 2026
         </p>
       </div>
     </div>

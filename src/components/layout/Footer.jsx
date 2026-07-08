@@ -15,9 +15,7 @@ const Footer = () => {
   return (
     <footer className="bg-linear-to-b from-neutral-900/95 to-black text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
-          {/* Brand Section */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <div className="relative">
@@ -38,7 +36,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links Section */}
           <div>
             <h4 className="text-lg font-semibold mb-5 relative inline-block">
               Tautan Cepat
@@ -63,14 +60,6 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="/my-bookings"
-                  className="text-gray-300 hover:text-red-500 transition-colors duration-300 text-sm"
-                >
-                  Pemesanan Saya
-                </a>
-              </li>
-              <li>
-                <a
                   href="/about"
                   className="text-gray-300 hover:text-red-500 transition-colors duration-300 text-sm"
                 >
@@ -80,7 +69,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Support Section */}
           <div>
             <h4 className="text-lg font-semibold mb-5 relative inline-block">
               Bantuan
@@ -122,7 +110,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info Section */}
           <div>
             <h4 className="text-lg font-semibold mb-5 relative inline-block">
               Hubungi Kami
@@ -155,7 +142,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Newsletter Section */}
         <div className="mt-12 pt-8 border-t border-gray-700">
           <div className="max-w-2xl mx-auto text-center">
             <h4 className="text-lg font-semibold mb-3">Tetap Terhubung</h4>
@@ -175,7 +161,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-gray-700">
           <div className="flex flex-col md:flex-row justify-center md:justify-between items-center gap-4">
             <p className="text-gray-400 text-sm">

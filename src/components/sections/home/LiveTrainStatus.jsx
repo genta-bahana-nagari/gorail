@@ -1,11 +1,6 @@
 // components/sections/LiveTrainStatus.jsx
 import { useState } from "react";
-import {
-  FaTrain,
-  FaMapMarkerAlt,
-  FaSearch,
-  FaSpinner,
-} from "react-icons/fa";
+import { FaTrain, FaMapMarkerAlt, FaSearch, FaSpinner } from "react-icons/fa";
 
 const LiveTrainStatus = () => {
   const [trainNumber, setTrainNumber] = useState("");
@@ -71,7 +66,9 @@ const LiveTrainStatus = () => {
           <div>
             <div className="inline-flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-full mb-4">
               <FaTrain className="text-xs md:text-sm" />
-              <span className="text-xs md:text-sm font-semibold">Real-Time Tracking</span>
+              <span className="text-xs md:text-sm font-semibold">
+                Real-Time Tracking
+              </span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Cek Status Kereta <span className="text-red-600">Live</span>

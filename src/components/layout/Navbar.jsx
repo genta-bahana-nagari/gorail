@@ -1,28 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
-import {
-  FaTrain,
-  FaUser,
-  FaSignOutAlt,
-  FaTicketAlt,
-  FaHome,
-  FaInfoCircle,
-} from "react-icons/fa";
+import { FaTrain, FaHome, FaInfoCircle } from "react-icons/fa";
 import { FaBars } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import { useState } from "react";
-import useBookingStore from "@/store/bookingStore";
+import { IoChatbubbleSharp } from "react-icons/io5";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { isLoggedIn, user, logout } = useBookingStore();
 
   const [isOpen, setIsOpen] = useState(false);
-
-  const handleLogout = () => {
-    logout();
-    navigate("/");
-    setIsOpen(false);
-  };
 
   const closeMenu = () => setIsOpen(false);
 
@@ -38,13 +24,8 @@ const Navbar = () => {
       icon: <FaTrain className="text-red-600 text-sm" />,
     },
     {
-      to: "/my-bookings",
-      label: "Pemesanan Saya",
-      icon: <FaTicketAlt className="text-red-600 text-sm" />,
-    },
-    {
       to: "/about",
-      label: "Tentang",
+      label: "Tentang Kami",
       icon: <FaInfoCircle className="text-red-600 text-sm" />,
     },
   ];
@@ -90,39 +71,14 @@ const Navbar = () => {
           </div>
 
           <div className="hidden md:flex items-center space-x-4 font-serif ">
-            {isLoggedIn ? (
-              <>
-                <div className="text-right">
-                  <span className="text-gray-400 text-xs tracking-wider">
-                    Penumpang
-                  </span>
+            <button
+              onClick={() => navigate("/contact")}
+              className="cursor-pointer flex items-center gap-2 bg-red-600 px-5 py-2 rounded-md hover:bg-red-700 transition-colors duration-300 text-white"
+            >
+              <IoChatbubbleSharp className="text-sm" />
 
-                  <p className="text-gray-800 text-sm font-medium">
-                    {user?.name}
-                  </p>
-                </div>
-
-                <div className="h-8 w-px bg-gray-300"></div>
-
-                <button
-                  onClick={handleLogout}
-                  className="cursor-pointer flex items-center gap-2 px-4 py-2 border border-red-600 text-red-600 hover:bg-red-600 hover:text-white rounded-md transition-all duration-300"
-                >
-                  <FaSignOutAlt className="text-sm" />
-
-                  <span className="text-sm font-medium">Keluar</span>
-                </button>
-              </>
-            ) : (
-              <button
-                onClick={() => navigate("/login")}
-                className="cursor-pointer flex items-center gap-2 bg-red-600 px-5 py-2 rounded-md hover:bg-red-700 transition-colors duration-300 text-white"
-              >
-                <FaUser className="text-sm" />
-
-                <span className="text-sm font-medium tracking-wide">Masuk</span>
-              </button>
-            )}
+              <span className="text-sm font-medium tracking-wide">Kontak</span>
+            </button>
           </div>
 
           <button
@@ -153,37 +109,17 @@ const Navbar = () => {
 
             <div className="border-t border-gray-200 my-2"></div>
 
-            {isLoggedIn ? (
-              <div className="px-4 py-2">
-                <div className="mb-3">
-                  <p className="text-xs text-gray-400 tracking-wide">
-                    Penumpang
-                  </p>
+            <button
+              onClick={() => {
+                navigate("/contact");
+                closeMenu();
+              }}
+              className="mx-4 flex items-center justify-center gap-2 bg-red-600 px-4 py-3 rounded-lg hover:bg-red-700 transition text-white"
+            >
+              <IoChatbubbleSharp />
 
-                  <p className="text-gray-800 font-medium">{user?.name}</p>
-                </div>
-
-                <button
-                  onClick={handleLogout}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-3 border border-red-600 text-red-600 hover:bg-red-600 hover:text-white rounded-lg transition"
-                >
-                  <FaSignOutAlt />
-                  <span>Keluar</span>
-                </button>
-              </div>
-            ) : (
-              <button
-                onClick={() => {
-                  navigate("/login");
-                  closeMenu();
-                }}
-                className="mx-4 flex items-center justify-center gap-2 bg-red-600 px-4 py-3 rounded-lg hover:bg-red-700 transition text-white"
-              >
-                <FaUser />
-
-                <span className="font-medium">Masuk</span>
-              </button>
-            )}
+              <span className="font-medium">Kontak</span>
+            </button>
           </div>
         </div>
       </div>
