@@ -1,110 +1,152 @@
-import { useState, useEffect, useCallback, useLayoutEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import {
-  FaFilter,
-  FaArrowLeft,
-  FaArrowRight,
-  FaEdit,
-  FaTrain,
-  FaCalendarAlt,
-  FaUsers,
-} from "react-icons/fa";
-import useBookingStore from "@/store/bookingStore";
-import { fetchTrains } from "@/services/mockApi";
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+  useLayoutEffect,
+} from "react";
+import { FaFilter, FaArrowLeft, FaArrowRight, FaTrain } from "react-icons/fa";
+import { fetchTrains } from "@/services/trainApi";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import TrainCard from "@/components/sections/trains/TrainCard";
 import SearchFilters from "@/components/sections/trains/SearchFilters";
 import LoadingSpinner from "@/components/common/LoadingSpinner";
+import TrainSearchPanel from "@/components/sections/trains/TrainSearchPanel";
+
+const SEARCH_INITIAL = {
+  from: "",
+  to: "",
+  passengers: 1,
+};
+
+const FILTER_INITIAL = {
+  trainType: "all",
+  priceRange: "all",
+  departureTime: "all",
+};
+
+const TRAINS_PER_PAGE = 6;
 
 const TrainListPage = () => {
-  const navigate = useNavigate();
-  const { searchParams, setSelectedTrain } = useBookingStore();
+  const [searchParams, setSearchParams] = useState(SEARCH_INITIAL);
+  const [filters, setFilters] = useState(FILTER_INITIAL);
+
   const [trains, setTrains] = useState([]);
-  const [filteredTrains, setFilteredTrains] = useState([]);
+
   const [loading, setLoading] = useState(true);
   const [showFilters, setShowFilters] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const trainsPerPage = 5;
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const loadTrains = useCallback(async () => {
-    setLoading(true);
+  const loadTrains = useCallback(async (params = SEARCH_INITIAL) => {
+    try {
+      setLoading(true);
 
-    const data = await fetchTrains(
-      searchParams.from || "",
-      searchParams.to || "",
-      searchParams.date || "",
-      searchParams.passengers || 1,
-    );
+      const data = await fetchTrains(
+        params.from,
+        params.to,
+        "",
+        params.passengers,
+        "all",
+      );
 
-    setTrains(data);
-    setFilteredTrains(data);
-    setLoading(false);
-  }, [
-    searchParams.from,
-    searchParams.to,
-    searchParams.date,
-    searchParams.passengers,
-  ]);
+      setTrains(data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
-    loadTrains();
+    loadTrains(searchParams);
   }, [loadTrains]);
 
-  const handleFilterChange = (filters) => {
-    let filtered = [...trains];
+  const handleSearchChange = useCallback(
+    async (newSearch) => {
+      setSearchParams(newSearch);
+      setCurrentPage(1);
+      await loadTrains(newSearch);
+    },
+    [loadTrains],
+  );
+
+  const handleSearchClear = useCallback(async () => {
+    setSearchParams(SEARCH_INITIAL);
+    setCurrentPage(1);
+    await loadTrains(SEARCH_INITIAL);
+  }, [loadTrains]);
+
+  const handleFilterChange = useCallback((newFilters) => {
+    setFilters(newFilters);
+    setCurrentPage(1);
+  }, []);
+
+  const handleFilterClear = useCallback(() => {
+    setFilters(FILTER_INITIAL);
+    setCurrentPage(1);
+  }, []);
+
+  const filteredTrains = useMemo(() => {
+    let result = [...trains];
 
     if (filters.trainType !== "all") {
-      filtered = filtered.filter(
+      result = result.filter(
         (train) => train.type.toLowerCase() === filters.trainType.toLowerCase(),
       );
     }
 
     if (filters.priceRange !== "all") {
       const [min, max] = filters.priceRange.split("-").map(Number);
-      filtered = filtered.filter(
-        (train) => train.price >= min && (max ? train.price <= max : true),
+
+      result = result.filter(
+        (train) => train.price >= min && train.price <= max,
       );
     }
 
     if (filters.departureTime !== "all") {
-      filtered = filtered.filter((train) => {
-        const hour = parseInt(train.departure.split(":")[0]);
-        if (filters.departureTime === "morning") return hour < 12;
-        if (filters.departureTime === "afternoon")
-          return hour >= 12 && hour < 17;
-        if (filters.departureTime === "evening") return hour >= 17;
-        return true;
+      result = result.filter((train) => {
+        const hour = Number(train.departure.split(":")[0]);
+
+        switch (filters.departureTime) {
+          case "morning":
+            return hour < 12;
+
+          case "afternoon":
+            return hour >= 12 && hour < 17;
+
+          case "evening":
+            return hour >= 17;
+
+          default:
+            return true;
+        }
       });
     }
 
-    setFilteredTrains(filtered);
-    setCurrentPage(1);
-  };
+    return result;
+  }, [trains, filters]);
 
-  const handleSelectTrain = (train) => {
-    setSelectedTrain(train);
-    navigate("/seats");
-  };
+  const totalPages = Math.ceil(filteredTrains.length / TRAINS_PER_PAGE);
 
-  const indexOfLastTrain = currentPage * trainsPerPage;
-  const indexOfFirstTrain = indexOfLastTrain - trainsPerPage;
+  const indexOfFirstTrain = (currentPage - 1) * TRAINS_PER_PAGE;
+  const indexOfLastTrain = indexOfFirstTrain + TRAINS_PER_PAGE;
+
   const currentTrains = filteredTrains.slice(
     indexOfFirstTrain,
     indexOfLastTrain,
   );
-  const totalPages = Math.ceil(filteredTrains.length / trainsPerPage);
 
   if (loading) {
     return (
-      <div className="min-h-screen flex flex-col">
+      <div className="flex min-h-screen flex-col">
         <Navbar />
 
-        <div className="flex-1 flex items-center justify-center">
+        <div className="flex flex-1 items-center justify-center">
           <LoadingSpinner message="Mencari jadwal kereta terbaik untuk Anda..." />
         </div>
 
@@ -152,67 +194,11 @@ const TrainListPage = () => {
             </div>
 
             <div className="max-w-4xl mx-auto mt-10">
-              <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
-                <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/10">
-                  <div className="p-6 text-center">
-                    <p className="text-xs uppercase tracking-[0.2em] text-red-400 mb-3">
-                      Rute
-                    </p>
-
-                    <div className="flex items-center justify-center gap-3">
-                      <span className="text-lg md:text-xl font-semibold text-white">
-                        {searchParams.from || "Jakarta"}
-                      </span>
-
-                      <div className="flex items-center gap-1 text-red-500">
-                        <div className="w-6 h-px bg-gray-500" />
-                        <FaTrain className="text-xs" />
-                        <div className="w-6 h-px bg-gray-500" />
-                      </div>
-
-                      <span className="text-lg md:text-xl font-semibold text-white">
-                        {searchParams.to || "Surabaya"}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="p-6 text-center">
-                    <p className="text-xs uppercase tracking-[0.2em] text-red-400 mb-3">
-                      Keberangkatan
-                    </p>
-
-                    <div className="flex items-center justify-center gap-2 text-white">
-                      <FaCalendarAlt className="text-red-500 text-sm" />
-                      <span className="font-medium">
-                        {searchParams.date || "15 Jan 2025"}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="p-6 text-center">
-                    <p className="text-xs uppercase tracking-[0.2em] text-red-400 mb-3">
-                      Penumpang
-                    </p>
-
-                    <div className="flex items-center justify-center gap-2 text-white">
-                      <FaUsers className="text-red-500 text-sm" />
-                      <span className="font-medium">
-                        {searchParams.passengers || 1} Penumpang
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="border-t border-white/10 px-6 py-4 flex justify-center bg-black/20">
-                  <button
-                    onClick={() => navigate("/")}
-                    className="group flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-all"
-                  >
-                    <FaEdit className="text-xs group-hover:text-red-500 transition-colors" />
-                    <span className="tracking-wide">Ubah Pencarian</span>
-                  </button>
-                </div>
-              </div>
+              <TrainSearchPanel
+                filters={searchParams}
+                onFilterChange={handleSearchChange}
+                onClear={handleSearchClear}
+              />
             </div>
           </div>
         </div>
@@ -221,14 +207,18 @@ const TrainListPage = () => {
           <div className="flex flex-col lg:flex-row gap-6">
             <div className="hidden lg:block lg:w-80">
               <div className="sticky top-24">
-                <SearchFilters onFilterChange={handleFilterChange} />
+                <SearchFilters
+                  filters={filters}
+                  onFilterChange={handleFilterChange}
+                  onClear={handleFilterClear}
+                />
               </div>
             </div>
 
             <div className="flex-1">
               <div className="lg:hidden mb-4">
                 <button
-                  onClick={() => setShowFilters(!showFilters)}
+                  onClick={() => setShowFilters((prev) => !prev)}
                   className="w-full flex items-center justify-center gap-2 bg-white border border-gray-200 py-3 rounded-lg shadow-sm"
                 >
                   <FaFilter className="text-red-600" />
@@ -237,7 +227,11 @@ const TrainListPage = () => {
 
                 {showFilters && (
                   <div className="mt-4">
-                    <SearchFilters onFilterChange={handleFilterChange} />
+                    <SearchFilters
+                      filters={filters}
+                      onFilterChange={handleFilterChange}
+                      onClear={handleFilterClear}
+                    />{" "}
                   </div>
                 )}
               </div>
@@ -246,6 +240,10 @@ const TrainListPage = () => {
                 <div className="text-xs md:text-sm lg:text-base">
                   <p className="railway-body text-gray-600">
                     Menampilkan{" "}
+                    <span className="font-bold text-gray-900">
+                      {currentTrains.length}
+                    </span>{" "}
+                    dari{" "}
                     <span className="font-bold text-gray-900">
                       {filteredTrains.length}
                     </span>{" "}
@@ -279,7 +277,7 @@ const TrainListPage = () => {
                       key={train.id}
                       train={train}
                       passengers={searchParams.passengers || 1}
-                      onSelect={() => handleSelectTrain(train)}
+                      // onSelect={() => handleSelectTrain(train)}
                     />
                   ))}
                 </div>
@@ -289,24 +287,40 @@ const TrainListPage = () => {
                 <div className="flex justify-center items-center space-x-2 mt-8">
                   <button
                     onClick={() =>
-                      setCurrentPage((prev) => Math.max(prev - 1, 1))
+                      setCurrentPage((page) => Math.max(page - 1, 1))
                     }
                     disabled={currentPage === 1}
-                    className="p-2 border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:border-red-600 transition"
+                    className="cursor-pointer p-2 border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:border-red-600 transition"
                   >
                     <FaArrowLeft className="text-sm" />
                   </button>
 
-                  <span className="px-4 py-2 bg-red-600 text-white rounded-md">
-                    {currentPage}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    {Array.from({ length: totalPages }, (_, index) => {
+                      const page = index + 1;
+
+                      return (
+                        <button
+                          key={page}
+                          onClick={() => setCurrentPage(page)}
+                          className={`cursor-pointer w-10 h-10 rounded-md border transition ${
+                            currentPage === page
+                              ? "bg-red-600 border-red-600 text-white"
+                              : "bg-white border-gray-300 hover:border-red-600"
+                          }`}
+                        >
+                          {page}
+                        </button>
+                      );
+                    })}
+                  </div>
 
                   <button
                     onClick={() =>
-                      setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                      setCurrentPage((page) => Math.min(page + 1, totalPages))
                     }
                     disabled={currentPage === totalPages}
-                    className="p-2 border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:border-red-600 transition"
+                    className="cursor-pointer p-2 border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:border-red-600 transition"
                   >
                     <FaArrowRight className="text-sm" />
                   </button>
