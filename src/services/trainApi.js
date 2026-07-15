@@ -140,15 +140,3 @@ export const getTrainClasses = () => trainClasses;
 export const getAvailableCities = () => {
   return [...new Set(trains.flatMap((train) => [train.from, train.to]))].sort();
 };
-
-export default {
-  fetchTrains,
-  fetchTrainById,
-  searchTrainsFlexible,
-  getPopularRoutes,
-  getTrainSchedule,
-  getLiveTrainStatus,
-  getFareRules,
-  getTrainClasses,
-  getAvailableCities,
-};
