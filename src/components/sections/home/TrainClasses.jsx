@@ -65,7 +65,7 @@ const TrainClasses = () => {
             <button
               key={key}
               onClick={() => setSelectedClass(key)}
-              className={`px-3 py-1 md:px-6 md:py-3 text-sm md:text-base rounded-xl font-semibold transition-colors transition-transform duration-300 cursor-pointer ${
+              className={`px-3 py-1 md:px-6 md:py-3 text-sm md:text-base rounded-xl font-semibold transition-transform duration-300 cursor-pointer ${
                 selectedClass === key
                   ? `bg-red-600 text-white shadow-lg transform scale-105`
                   : "bg-white text-gray-700 hover:bg-gray-200/80"

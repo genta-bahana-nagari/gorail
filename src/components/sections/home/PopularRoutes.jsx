@@ -41,7 +41,7 @@ const PopularRoutes = () => {
               className="group cursor-pointer"
               onClick={() => navigate("/trains")}
             >
-              <div className="cursor-pointer bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow transition-transform duration-300 transform hover:-translate-y-2">
+              <div className="cursor-pointer bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-transform duration-300 transform hover:-translate-y-2">
                 <div className="relative h-40 lg:h-65 overflow-hidden">
                   <img
                     src={route.image}
