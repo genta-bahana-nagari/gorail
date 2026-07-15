@@ -6,15 +6,17 @@ const Input = ({
   placeholder,
   required = false,
   className = "",
+  id,
 }) => {
   return (
     <div className={`mb-4 ${className}`}>
       {label && (
-        <label className="block text-gray-700 text-sm font-bold mb-2">
+        <label htmlFor={id} className="block text-gray-700 text-sm font-bold mb-2">
           {label} {required && <span className="text-red-500">*</span>}
         </label>
       )}
       <input
+        id={id}
         type={type}
         value={value}
         onChange={onChange}
