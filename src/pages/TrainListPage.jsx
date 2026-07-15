@@ -277,7 +277,6 @@ const TrainListPage = () => {
                       key={train.id}
                       train={train}
                       passengers={searchParams.passengers || 1}
-                      // onSelect={() => handleSelectTrain(train)}
                     />
                   ))}
                 </div>
