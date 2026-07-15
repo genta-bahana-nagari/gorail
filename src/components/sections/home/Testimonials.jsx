@@ -74,7 +74,7 @@ const Testimonials = () => {
         </div>
 
         {/* Testimonials Grid - Desktop */}
-        <div className="cursor-pointer hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
