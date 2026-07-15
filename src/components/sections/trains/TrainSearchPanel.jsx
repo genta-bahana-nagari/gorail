@@ -31,6 +31,7 @@ const TrainSearchPanel = ({ filters, onFilterChange, onClear }) => {
               name="from"
               value={filters.from}
               onChange={handleChange}
+              aria-label="Pilih kota asal"
               className="bg-transparent font-semibold text-white outline-none"
             >
               <option value="" className="text-black">
@@ -59,6 +60,7 @@ const TrainSearchPanel = ({ filters, onFilterChange, onClear }) => {
               name="to"
               value={filters.to}
               onChange={handleChange}
+              aria-label="Pilih kota tujuan"
               className="bg-transparent font-semibold text-white outline-none"
             >
               <option value="" className="text-black">
@@ -87,6 +89,7 @@ const TrainSearchPanel = ({ filters, onFilterChange, onClear }) => {
               name="passengers"
               value={filters.passengers}
               onChange={handleChange}
+              aria-label="Pilih jumlah penumpang"
               className="bg-transparent text-white outline-none"
             >
               {passengerOptions.map((num) => (

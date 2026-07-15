@@ -1,4 +1,3 @@
-// components/sections/FAQSection.jsx
 import { useState } from "react";
 import {
   FaChevronDown,
@@ -67,6 +66,8 @@ const FAQSection = () => {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                aria-expanded={openIndex === index}
+                aria-controls={`faq-answer-${index}`}
                 className="cursor-pointer w-full flex justify-between items-center p-5 text-left bg-white hover:bg-gray-50 transition"
               >
                 <span className="font-semibold text-gray-900 pr-4">
@@ -80,7 +81,8 @@ const FAQSection = () => {
               </button>
 
               <div
-                className={`transition-all duration-300 overflow-hidden ${
+                id={`faq-answer-${index}`}
+                className={`transition-[max-height] duration-300 overflow-hidden ${
                   openIndex === index ? "max-h-96" : "max-h-0"
                 }`}
               >

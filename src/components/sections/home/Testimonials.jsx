@@ -1,4 +1,3 @@
-// components/sections/Testimonials.jsx
 import { useState } from "react";
 import {
   FaQuoteLeft,
@@ -74,11 +73,11 @@ const Testimonials = () => {
         </div>
 
         {/* Testimonials Grid - Desktop */}
-        <div className="cursor-pointer hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+              className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow transition-transform duration-300 transform hover:-translate-y-2"
             >
               <FaQuoteLeft className="text-red-500 text-2xl mb-4 opacity-50" />
               <p className="text-gray-700 text-sm leading-relaxed mb-4">
@@ -150,12 +149,14 @@ const Testimonials = () => {
           {/* Navigation Buttons */}
           <button
             onClick={prevTestimonial}
+            aria-label="Previous testimonial"
             className="cursor-pointer absolute left-0 top-1/2 -translate-y-1/2 -ml-4 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:text-red-600 transition"
           >
             <FaChevronLeft className="text-sm" />
           </button>
           <button
             onClick={nextTestimonial}
+            aria-label="Next testimonial"
             className="cursor-pointer absolute right-0 top-1/2 -translate-y-1/2 -mr-4 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:text-red-600 transition"
           >
             <FaChevronRight className="text-sm" />
@@ -167,7 +168,8 @@ const Testimonials = () => {
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
+                aria-label={`Go to testimonial ${index + 1}`}
+                className={`h-2 rounded-full transition-[width,background-color] duration-300 ${
                   currentIndex === index ? "w-8 bg-red-600" : "w-2 bg-gray-400"
                 }`}
               />

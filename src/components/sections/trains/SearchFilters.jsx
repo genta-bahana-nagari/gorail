@@ -37,6 +37,7 @@ const SearchFilters = ({ filters, onFilterChange, onClear }) => {
             name="trainType"
             value={filters.trainType}
             onChange={handleChange}
+            aria-label="Pilih tipe kereta"
             className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
           >
             <option value="all">Semua Tipe</option>
@@ -57,6 +58,7 @@ const SearchFilters = ({ filters, onFilterChange, onClear }) => {
             name="priceRange"
             value={filters.priceRange}
             onChange={handleChange}
+            aria-label="Pilih rentang harga"
             className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
           >
             <option value="all">Semua Harga</option>
@@ -78,6 +80,7 @@ const SearchFilters = ({ filters, onFilterChange, onClear }) => {
             name="departureTime"
             value={filters.departureTime}
             onChange={handleChange}
+            aria-label="Pilih waktu keberangkatan"
             className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
           >
             <option value="all">Semua Waktu</option>

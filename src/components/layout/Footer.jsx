@@ -29,10 +29,42 @@ const Footer = () => {
               berbagai destinasi dengan kenyamanan dan kemudahan.
             </p>
             <div className="flex space-x-4 pt-2">
-              <FaTwitter className="text-xl text-gray-400 hover:text-red-500 cursor-pointer transition-colors duration-300" />
-              <FaFacebook className="text-xl text-gray-400 hover:text-red-500 cursor-pointer transition-colors duration-300" />
-              <FaInstagram className="text-xl text-gray-400 hover:text-red-500 cursor-pointer transition-colors duration-300" />
-              <FaLinkedin className="text-xl text-gray-400 hover:text-red-500 cursor-pointer transition-colors duration-300" />
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on Twitter"
+                className="text-xl text-gray-400 hover:text-red-500 transition-colors duration-300"
+              >
+                <FaTwitter />
+              </a>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on Facebook"
+                className="text-xl text-gray-400 hover:text-red-500 transition-colors duration-300"
+              >
+                <FaFacebook />
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on Instagram"
+                className="text-xl text-gray-400 hover:text-red-500 transition-colors duration-300"
+              >
+                <FaInstagram />
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on LinkedIn"
+                className="text-xl text-gray-400 hover:text-red-500 transition-colors duration-300"
+              >
+                <FaLinkedin />
+              </a>
             </div>
           </div>
 

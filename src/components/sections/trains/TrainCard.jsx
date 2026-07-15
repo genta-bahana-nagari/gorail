@@ -9,6 +9,7 @@ import {
   FaPlug,
 } from "react-icons/fa";
 import Button from "@/components/common/Button";
+import { formatRupiah } from "@/utils/formatters";
 
 const TrainCard = ({ train, passengers, onSelect }) => {
   const facilities = [];
@@ -20,7 +21,7 @@ const TrainCard = ({ train, passengers, onSelect }) => {
     facilities.push(<FaPlug key="charger" className="text-gray-400" />);
 
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border-l-4 border-red-600">
+    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden border-l-4 border-red-600">
       <div className="p-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
           <div className="flex-1">
@@ -53,7 +54,7 @@ const TrainCard = ({ train, passengers, onSelect }) => {
 
           <div className="text-right mt-3 md:mt-0">
             <p className="text-2xl font-bold text-red-600">
-              Rp {train.price.toLocaleString("id-ID")}
+              {formatRupiah(train.price)}
             </p>
             <p className="text-xs text-gray-500">per penumpang</p>
           </div>
@@ -87,7 +88,7 @@ const TrainCard = ({ train, passengers, onSelect }) => {
             <div>
               <p className="text-xs text-gray-500">Total Harga</p>
               <p className="font-medium text-gray-800">
-                Rp {(train.price * passengers).toLocaleString("id-ID")}
+                {formatRupiah(train.price * passengers)}
               </p>
             </div>
           </div>

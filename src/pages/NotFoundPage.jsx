@@ -10,7 +10,7 @@ const NotFoundPage = () => {
     <>
       <Navbar />
       <main>
-        <div className="min-h-screen bg-l-to-b from-gray-50 to-gray-100 flex items-center justify-center px-4">
+        <div className="min-h-screen bg-linear-to-b from-gray-50 to-gray-100 flex items-center justify-center px-4">
           <div className="max-w-2xl mx-auto text-center">
             <div className="flex justify-center mb-6">
               <div className="w-16 h-px bg-red-700"></div>
@@ -36,7 +36,7 @@ const NotFoundPage = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={() => navigate(-1)}
-                className="flex items-center justify-center space-x-2 px-6 py-3 border-2 border-gray-300 text-gray-700 hover:border-red-700 hover:text-red-700 rounded-lg transition-all duration-300"
+                className="flex items-center justify-center space-x-2 px-6 py-3 border-2 border-gray-300 text-gray-700 hover:border-red-700 hover:text-red-700 rounded-lg transition-colors duration-300"
               >
                 <FaArrowLeft />
                 <span>Kembali</span>
@@ -44,7 +44,7 @@ const NotFoundPage = () => {
 
               <button
                 onClick={() => navigate("/")}
-                className="flex items-center justify-center space-x-2 px-6 py-3 bg-red-700 text-white hover:bg-red-800 rounded-lg transition-all duration-300"
+                className="flex items-center justify-center space-x-2 px-6 py-3 bg-red-700 text-white hover:bg-red-800 rounded-lg transition-colors duration-300"
               >
                 <FaHome />
                 <span>Beranda</span>
