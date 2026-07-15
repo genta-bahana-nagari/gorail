@@ -9,6 +9,7 @@ import {
   FaPlug,
 } from "react-icons/fa";
 import Button from "@/components/common/Button";
+import { formatRupiah } from "@/utils/formatters";
 
 const TrainCard = ({ train, passengers, onSelect }) => {
   const facilities = [];
@@ -53,7 +54,7 @@ const TrainCard = ({ train, passengers, onSelect }) => {
 
           <div className="text-right mt-3 md:mt-0">
             <p className="text-2xl font-bold text-red-600">
-              Rp {train.price.toLocaleString("id-ID")}
+              {formatRupiah(train.price)}
             </p>
             <p className="text-xs text-gray-500">per penumpang</p>
           </div>
@@ -87,7 +88,7 @@ const TrainCard = ({ train, passengers, onSelect }) => {
             <div>
               <p className="text-xs text-gray-500">Total Harga</p>
               <p className="font-medium text-gray-800">
-                Rp {(train.price * passengers).toLocaleString("id-ID")}
+                {formatRupiah(train.price * passengers)}
               </p>
             </div>
           </div>
