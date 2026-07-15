@@ -19,7 +19,7 @@ const Button = ({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`px-6 py-2 rounded-md font-serif font-medium transition-all duration-200 ${variants[variant]} ${disabled ? "opacity-50 cursor-not-allowed" : ""} ${className}`}
+      className={`px-6 py-2 rounded-md font-serif font-medium transition-colors duration-200 ${variants[variant]} ${disabled ? "opacity-50 cursor-not-allowed" : ""} ${className}`}
     >
       {children}
     </button>

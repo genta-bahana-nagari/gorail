@@ -42,7 +42,7 @@ const PopularRoutes = () => {
               className="group cursor-pointer"
               onClick={() => navigate("/trains")}
             >
-              <div className="cursor-pointer bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+              <div className="cursor-pointer bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow,transition-transform duration-300 transform hover:-translate-y-2">
                 <div className="relative h-40 lg:h-65 overflow-hidden">
                   <img
                     src={route.image}
@@ -91,7 +91,7 @@ const PopularRoutes = () => {
                         {route.price}
                       </p>
                     </div>
-                    <button className="cursor-pointer px-4 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-600 hover:text-white transition-all duration-300 text-sm font-medium">
+                    <button className="cursor-pointer px-4 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-600 hover:text-white transition-colors duration-300 text-sm font-medium">
                       Pesan
                     </button>
                   </div>
@@ -104,7 +104,7 @@ const PopularRoutes = () => {
         <div className="text-center mt-12">
           <button
             onClick={() => navigate("/trains")}
-            className="cursor-pointer inline-flex items-center gap-2 px-8 py-3 border-2 border-red-600 text-red-600 rounded-xl hover:bg-red-600 hover:text-white transition-all duration-300 font-semibold"
+            className="cursor-pointer inline-flex items-center gap-2 px-8 py-3 border-2 border-red-600 text-red-600 rounded-xl hover:bg-red-600 hover:text-white transition-colors duration-300 font-semibold"
           >
             Lihat Semua Rute
             <FaArrowRight className="text-sm" />

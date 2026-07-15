@@ -19,7 +19,7 @@ class ErrorBoundary extends Component {
       return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
           <div className="max-w-lg mx-auto text-center">
-            <div className="text-6xl mb-4">&#9888;</div>
+            {/* <div className="text-6xl mb-4">&#9888;</div> */}
             <h1 className="text-2xl font-bold text-gray-900 mb-2">
               Terjadi Kesalahan
             </h1>

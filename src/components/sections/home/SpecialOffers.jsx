@@ -173,7 +173,7 @@ const SpecialOffers = () => {
             return (
               <div
                 key={offer.id}
-                className={`bg-white rounded-3xl overflow-hidden shadow-2xl transition-all duration-300 ${
+                className={`bg-white rounded-3xl overflow-hidden shadow-2xl transition-transform,transition-shadow,transition-opacity duration-300 ${
                   isExpired
                     ? "opacity-60 grayscale cursor-default"
                     : "cursor-pointer hover:-translate-y-2 hover:shadow-[0_25px_50px_rgba(0,0,0,0.25)]"
@@ -218,7 +218,7 @@ const SpecialOffers = () => {
                   <button
                     disabled={isExpired}
                     onClick={() => navigate("/trains")}
-                    className={`w-full py-3 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all ${
+                    className={`w-full py-3 rounded-xl font-semibold flex items-center justify-center gap-2 transition-colors ${
                       isExpired
                         ? "bg-gray-400 cursor-not-allowed text-white"
                         : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"

@@ -65,7 +65,7 @@ const Navbar = () => {
                 {link.icon}
                 {link.label}
 
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-600 group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-600 group-hover:w-full transition-[width] duration-300"></span>
               </Link>
             ))}
           </div>
@@ -92,7 +92,7 @@ const Navbar = () => {
         </div>
 
         <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ${
+          className={`md:hidden overflow-hidden transition-[max-height] duration-300 ${
             isOpen ? "max-h-125 py-4" : "max-h-0"
           }`}
         >

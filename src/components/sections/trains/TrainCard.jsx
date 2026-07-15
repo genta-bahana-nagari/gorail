@@ -21,7 +21,7 @@ const TrainCard = ({ train, passengers, onSelect }) => {
     facilities.push(<FaPlug key="charger" className="text-gray-400" />);
 
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border-l-4 border-red-600">
+    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden border-l-4 border-red-600">
       <div className="p-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
           <div className="flex-1">

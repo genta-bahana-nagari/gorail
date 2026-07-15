@@ -83,7 +83,7 @@ const FAQSection = () => {
 
               <div
                 id={`faq-answer-${index}`}
-                className={`transition-all duration-300 overflow-hidden ${
+                className={`transition-[max-height] duration-300 overflow-hidden ${
                   openIndex === index ? "max-h-96" : "max-h-0"
                 }`}
               >

@@ -78,7 +78,7 @@ const Testimonials = () => {
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+              className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow,transition-transform duration-300 transform hover:-translate-y-2"
             >
               <FaQuoteLeft className="text-red-500 text-2xl mb-4 opacity-50" />
               <p className="text-gray-700 text-sm leading-relaxed mb-4">
@@ -170,7 +170,7 @@ const Testimonials = () => {
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 aria-label={`Go to testimonial ${index + 1}`}
-                className={`h-2 rounded-full transition-all duration-300 ${
+                className={`h-2 rounded-full transition-[width,background-color] duration-300 ${
                   currentIndex === index ? "w-8 bg-red-600" : "w-2 bg-gray-400"
                 }`}
               />
