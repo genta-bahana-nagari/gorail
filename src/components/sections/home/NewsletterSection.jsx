@@ -1,4 +1,3 @@
-// src/components/sections/home/NewsletterSection.jsx
 import { useState } from "react";
 import {
   FaEnvelope,

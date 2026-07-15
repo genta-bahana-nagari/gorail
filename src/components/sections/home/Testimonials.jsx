@@ -1,4 +1,3 @@
-// components/sections/Testimonials.jsx
 import { useState } from "react";
 import {
   FaQuoteLeft,
@@ -78,7 +77,7 @@ const Testimonials = () => {
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow,transition-transform duration-300 transform hover:-translate-y-2"
+              className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow transition-transform duration-300 transform hover:-translate-y-2"
             >
               <FaQuoteLeft className="text-red-500 text-2xl mb-4 opacity-50" />
               <p className="text-gray-700 text-sm leading-relaxed mb-4">

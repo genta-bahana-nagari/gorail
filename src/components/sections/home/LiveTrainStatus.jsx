@@ -1,4 +1,3 @@
-// components/sections/LiveTrainStatus.jsx
 import { useState } from "react";
 import { FaTrain, FaMapMarkerAlt, FaSearch, FaSpinner } from "react-icons/fa";
 

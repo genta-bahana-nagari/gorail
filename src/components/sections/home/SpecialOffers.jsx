@@ -173,7 +173,7 @@ const SpecialOffers = () => {
             return (
               <div
                 key={offer.id}
-                className={`bg-white rounded-3xl overflow-hidden shadow-2xl transition-transform,transition-shadow,transition-opacity duration-300 ${
+                className={`bg-white rounded-3xl overflow-hidden shadow-2xl transition-transform transition-shadow transition-opacity duration-300 ${
                   isExpired
                     ? "opacity-60 grayscale cursor-default"
                     : "cursor-pointer hover:-translate-y-2 hover:shadow-[0_25px_50px_rgba(0,0,0,0.25)]"

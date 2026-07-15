@@ -1,4 +1,3 @@
-// components/sections/FAQSection.jsx
 import { useState } from "react";
 import {
   FaChevronDown,
