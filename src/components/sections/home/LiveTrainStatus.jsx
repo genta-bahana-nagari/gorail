@@ -62,7 +62,6 @@ const LiveTrainStatus = () => {
     <section className="py-16 bg-linear-to-br from-blue-50 to-indigo-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Side - Info */}
           <div>
             <div className="inline-flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-full mb-4">
               <FaTrain className="text-xs md:text-sm" />
@@ -78,7 +77,6 @@ const LiveTrainStatus = () => {
               terkini tentang jadwal, keterlambatan, dan platform keberangkatan.
             </p>
 
-            {/* Search Form */}
             <form onSubmit={handleSearch} className="mb-6">
               <div className="flex flex-col sm:flex-row gap-3">
                 <div className="flex-1 relative">
@@ -88,6 +86,7 @@ const LiveTrainStatus = () => {
                     placeholder="Masukkan nomor kereta (cth: 123A)"
                     value={trainNumber}
                     onChange={(e) => setTrainNumber(e.target.value)}
+                    aria-label="Masukkan nomor kereta"
                     className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200 transition"
                   />
                 </div>
@@ -111,7 +110,6 @@ const LiveTrainStatus = () => {
               </div>
             </form>
 
-            {/* Features */}
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-sm text-gray-600">
                 <div className="w-1.5 h-1.5 bg-red-600 rounded-full"></div>
@@ -128,10 +126,9 @@ const LiveTrainStatus = () => {
             </div>
           </div>
 
-          {/* Right Side - Result Card */}
           <div>
             {trainStatus ? (
-              <div className="bg-white rounded-2xl shadow-xl p-6 animate-fadeIn">
+              <div className="bg-white rounded-2xl shadow-xl p-6">
                 <div className="flex justify-between items-start mb-4">
                   <div>
                     <h3 className="text-xl font-bold text-gray-900">

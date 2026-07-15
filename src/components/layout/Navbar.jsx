@@ -83,6 +83,8 @@ const Navbar = () => {
 
           <button
             onClick={() => setIsOpen(!isOpen)}
+            aria-expanded={isOpen}
+            aria-label="Toggle menu"
             className="md:hidden text-2xl text-gray-700"
           >
             {isOpen ? <IoClose /> : <FaBars />}

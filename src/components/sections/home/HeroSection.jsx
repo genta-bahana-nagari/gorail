@@ -163,6 +163,7 @@ const HeroSection = () => {
         {/* Navigation */}
         <button
           onClick={prevSlide}
+          aria-label="Previous slide"
           className="cursor-pointer hidden md:flex absolute left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/90 items-center justify-center shadow-lg"
         >
           <FaChevronLeft />
@@ -170,6 +171,7 @@ const HeroSection = () => {
 
         <button
           onClick={nextSlide}
+          aria-label="Next slide"
           className="cursor-pointer hidden md:flex absolute right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/90 items-center justify-center shadow-lg"
         >
           <FaChevronRight />
@@ -189,6 +191,7 @@ const HeroSection = () => {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
+              aria-label={`Go to slide ${index + 1}`}
               className={`h-2 rounded-full transition-all duration-300 ${
                 currentSlide === index ? "w-10 bg-red-600" : "w-3 bg-white/60"
               }`}

@@ -150,12 +150,14 @@ const Testimonials = () => {
           {/* Navigation Buttons */}
           <button
             onClick={prevTestimonial}
+            aria-label="Previous testimonial"
             className="cursor-pointer absolute left-0 top-1/2 -translate-y-1/2 -ml-4 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:text-red-600 transition"
           >
             <FaChevronLeft className="text-sm" />
           </button>
           <button
             onClick={nextTestimonial}
+            aria-label="Next testimonial"
             className="cursor-pointer absolute right-0 top-1/2 -translate-y-1/2 -mr-4 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:text-red-600 transition"
           >
             <FaChevronRight className="text-sm" />
@@ -167,6 +169,7 @@ const Testimonials = () => {
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
+                aria-label={`Go to testimonial ${index + 1}`}
                 className={`h-2 rounded-full transition-all duration-300 ${
                   currentIndex === index ? "w-8 bg-red-600" : "w-2 bg-gray-400"
                 }`}
