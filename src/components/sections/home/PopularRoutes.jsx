@@ -1,68 +1,30 @@
 // components/sections/PopularRoutes.jsx
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaTrain, FaClock, FaMapMarkerAlt } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa6";
+import popularRoutesData from "@/data/popularRoutes";
 
 const PopularRoutes = () => {
   const navigate = useNavigate();
-  const [setHoveredRoute] = useState(null);
 
-  const routes = [
-    {
-      id: 1,
-      from: "Jakarta",
-      fromCode: "GMR",
-      to: "Bandung",
-      toCode: "BD",
-      duration: "3 jam",
-      price: "Rp 150.000",
-      frequency: "20x/hari",
-      image:
-        "https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=400&h=300&fit=crop",
-    },
-    {
-      id: 2,
-      from: "Surabaya",
-      fromCode: "SBI",
-      to: "Yogyakarta",
-      toCode: "YK",
-      duration: "4 jam",
-      price: "Rp 200.000",
-      frequency: "15x/hari",
-      image:
-        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=400&h=300&fit=crop",
-    },
-    {
-      id: 3,
-      from: "Semarang",
-      fromCode: "SMC",
-      to: "Jakarta",
-      toCode: "GMR",
-      duration: "5 jam",
-      price: "Rp 250.000",
-      frequency: "12x/hari",
-      image:
-        "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=400&h=300&fit=crop",
-    },
-    {
-      id: 4,
-      from: "Malang",
-      fromCode: "MLG",
-      to: "Surabaya",
-      toCode: "SBI",
-      duration: "2 jam",
-      price: "Rp 80.000",
-      frequency: "18x/hari",
-      image:
-        "https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=400&h=300&fit=crop",
-    },
-  ];
+  const routes = popularRoutesData.map((route, index) => ({
+    id: index + 1,
+    from: route.from,
+    fromCode: route.from.substring(0, 3).toUpperCase(),
+    to: route.to,
+    toCode: route.to.substring(0, 3).toUpperCase(),
+    duration: `${Math.floor(route.count / 100) + 2} jam`,
+    price: `Rp ${Math.floor(route.count * 150).toLocaleString("id-ID")}`,
+    frequency: `${Math.floor(route.count / 100)}x/hari`,
+    image:
+      index % 2 === 0
+        ? "https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=400&h=300&fit=crop"
+        : "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=400&h=300&fit=crop",
+  }));
 
   return (
     <section className="py-16 bg-linear-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Rute Populer
@@ -73,18 +35,14 @@ const PopularRoutes = () => {
           </p>
         </div>
 
-        {/* Routes Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
           {routes.map((route) => (
             <div
               key={route.id}
               className="group cursor-pointer"
-              onMouseEnter={() => setHoveredRoute(route.id)}
-              onMouseLeave={() => setHoveredRoute(null)}
               onClick={() => navigate("/trains")}
             >
               <div className="cursor-pointer bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                {/* Image */}
                 <div className="relative h-40 lg:h-65 overflow-hidden">
                   <img
                     src={route.image}
@@ -106,7 +64,6 @@ const PopularRoutes = () => {
                   </div>
                 </div>
 
-                {/* Content */}
                 <div className="p-5">
                   <div className="flex items-center justify-between mb-3">
                     <h3 className="font-bold text-lg text-gray-900 flex items-center gap-2">
@@ -144,7 +101,6 @@ const PopularRoutes = () => {
           ))}
         </div>
 
-        {/* View All Button */}
         <div className="text-center mt-12">
           <button
             onClick={() => navigate("/trains")}

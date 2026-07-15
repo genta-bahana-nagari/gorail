@@ -8,55 +8,41 @@ import {
   FaSnowflake,
   FaTv,
 } from "react-icons/fa";
+import trainClassesData from "@/data/trainClasses";
 
 const TrainClasses = () => {
   const [selectedClass, setSelectedClass] = useState("eksekutif");
 
-  const classes = {
-    ekonomi: {
-      name: "Ekonomi",
-      price: "Mulai Rp 80.000",
-      description: "Perjalanan hemat dengan fasilitas standar yang nyaman",
-      features: [
-        { icon: FaChair, text: "Kursi standar" },
-        { icon: FaSnowflake, text: "AC" },
-      ],
-
+  const classes = trainClassesData.reduce((acc, item) => {
+    acc[item.id] = {
+      name: item.name,
+      price: `Mulai Rp ${Math.round(item.priceMultiplier * 250000).toLocaleString("id-ID")}`,
+      description: item.description,
+      features: item.features.map((feature, index) => {
+        const iconMap = {
+          "Kursi reclining": FaChair,
+          "Kursi legrest": FaChair,
+          "Kursi standar": FaChair,
+          WiFi: FaWifi,
+          "WiFi premium": FaWifi,
+          AC: FaSnowflake,
+          "Charger port": FaPlug,
+          "Makanan & minuman": FaUtensils,
+          "Makanan ringan": FaUtensils,
+          "TV pribadi": FaTv,
+          "TV bersama": FaTv,
+        };
+        return { icon: iconMap[feature] || FaChair, text: feature };
+      }),
       image:
-        "https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=600&h=400&fit=crop",
-    },
-    bisnis: {
-      name: "Bisnis",
-      price: "Mulai Rp 150.000",
-      description:
-        "Kenyamanan ekstra dengan fasilitas premium untuk perjalanan bisnis",
-      features: [
-        { icon: FaChair, text: "Kursi reclining" },
-        { icon: FaWifi, text: "WiFi" },
-        { icon: FaSnowflake, text: "AC" },
-        { icon: FaPlug, text: "Charger port" },
-      ],
-
-      image:
-        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&h=400&fit=crop",
-    },
-    eksekutif: {
-      name: "Eksekutif",
-      price: "Mulai Rp 250.000",
-      description: "Pengalaman perjalanan mewah dengan layanan terbaik",
-      features: [
-        { icon: FaChair, text: "Kursi legrest" },
-        { icon: FaWifi, text: "WiFi premium" },
-        { icon: FaUtensils, text: "Makanan & minuman" },
-        { icon: FaTv, text: "Hiburan pribadi" },
-        { icon: FaPlug, text: "Charger port" },
-        { icon: FaSnowflake, text: "AC" },
-      ],
-
-      image:
-        "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=600&h=400&fit=crop",
-    },
-  };
+        item.id === "ekonomi"
+          ? "https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=600&h=400&fit=crop"
+          : item.id === "bisnis"
+            ? "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&h=400&fit=crop"
+            : "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=600&h=400&fit=crop",
+    };
+    return acc;
+  }, {});
 
   const currentClass = classes[selectedClass];
 
