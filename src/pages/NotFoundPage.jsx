@@ -10,7 +10,7 @@ const NotFoundPage = () => {
     <>
       <Navbar />
       <main>
-        <div className="min-h-screen bg-l-to-b from-gray-50 to-gray-100 flex items-center justify-center px-4">
+        <div className="min-h-screen bg-linear-to-b from-gray-50 to-gray-100 flex items-center justify-center px-4">
           <div className="max-w-2xl mx-auto text-center">
             <div className="flex justify-center mb-6">
               <div className="w-16 h-px bg-red-700"></div>
